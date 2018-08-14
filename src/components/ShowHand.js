@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Tooltip from "@material-ui/core/Tooltip";
 import Paper from "@material-ui/core/Paper";
+import TableCell from "@material-ui/core/TableCell";
 
 const styles = {
   div: {
@@ -19,11 +14,9 @@ const styles = {
     flex: 1,
     height: "100%",
     margin: 20,
-    textAlign: "center",
     padding: 20
   },
   card: {
-   
     flex: 4,
     height: "100%",
     margin: 10,
@@ -59,22 +52,19 @@ class ShowHand extends Component {
         rank: this.props.hand[i].rank
       });
     }
-
-    if (this.props.isGameActive && this.props.isRoundActive) {
-      // return (<DisplayHand />);
-      return (
-        <div style={styles.paperLeft}>
-          {handToDisplay.map((card, index) => (
-            <Paper key={index} zdepth={3} style={styles.card}>
-              {card.suit} {card.rank}
-            </Paper>
-          ))}
-        </div>
-      );
-    } else {
-      console.log("this.props.hand is undefined!");
-      return null;
-    }
+    return (
+      <div>
+        {handToDisplay.map((card, index) => (
+          <TableCell>
+            <div>
+              <Paper key={index} zdepth={3} style={styles.card}>
+                {card.suit} {card.rank}
+              </Paper>
+            </div>
+          </TableCell>
+        ))}
+      </div>
+    );
   }
 }
 
